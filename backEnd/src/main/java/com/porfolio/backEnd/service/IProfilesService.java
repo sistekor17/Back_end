@@ -17,7 +17,7 @@ public interface IProfilesService {
     public void deleteProfile(long id);
     
     // Find profile
-    public Profiles getProfile(long id);
+    public Profiles findProfile(long id);
     
     // List profiles
     public List<Profiles> getListProfiles();

@@ -35,7 +35,7 @@ public class ProfilesService implements IProfilesService{
 
 
     @Override
-    public Profiles getProfile(long id) {
+    public Profiles findProfile(long id) {
        Profiles profile = profileRepository.findById(id).orElse(null);
        return profile;
         
