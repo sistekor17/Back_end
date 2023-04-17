@@ -3,20 +3,21 @@ package com.porfolio.backEnd.controller;
 
 import com.porfolio.backEnd.model.Profiles;
 import com.porfolio.backEnd.service.IProfilesService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author JAMES
  */
 
-@Controller
+@RestController
 public class ProfilesController {
     @Autowired
     private IProfilesService interProfile;
@@ -30,14 +31,19 @@ public class ProfilesController {
     @PostMapping("/profiles/new")
     public String newProfile(@RequestBody Profiles profile){
         interProfile.saveProfile(profile);
-        return "El usuario se a creado correctamente";
+        return "El usuario se a creado con exito";
+        
     }
     
-    @DeleteMapping("profiles/delete/{id}")
+    @DeleteMapping("/profiles/delete/{id}")
     public String deleteProfile(@PathVariable long id){
         interProfile.deleteProfile(id);
         return "El usuario a sido eliminado";
     }
     
+    @GetMapping("/profiles/getlist")
+    public List<Profiles> getListProfiles(){
+        return interProfile.getListProfiles();
+    }
     
 }
