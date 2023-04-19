@@ -4,6 +4,7 @@ package com.porfolio.backEnd.service;
 import com.porfolio.backEnd.model.Profiles;
 import com.porfolio.backEnd.repository.ProfilesRepository;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,9 +37,23 @@ public class ProfilesService implements IProfilesService{
 
     @Override
     public Profiles findProfile(long id) {
-       Profiles profile = profileRepository.findById(id).orElse(null);
-       return profile;
+       return profileRepository.findById(id).orElseThrow(()-> new NoSuchElementException("No se encuentra el perfil con el id: "+ id ));
         
     }
-    
+
+    @Override
+    public void editProfile(long id, Profiles newProfile) {
+        Profiles profile = profileRepository.findById(id).orElseThrow(()-> new NoSuchElementException("No se encuentra el perfil           con el id: "+ id ));
+        
+        profile.setFullname(newProfile.getFullname());
+        profile.setProfession(newProfile.getProfession());
+        profile.setImageprofile(newProfile.getImageprofile());
+        profileRepository.save(profile);
+            
+        
+    }
+
+   
+
+
 }
