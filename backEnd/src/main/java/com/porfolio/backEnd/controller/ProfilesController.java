@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,6 +45,14 @@ public class ProfilesController {
     @GetMapping("/profiles/getlist")
     public List<Profiles> getListProfiles(){
         return interProfile.getListProfiles();
+    }
+    
+    @PutMapping("/profiles/editprofile/{id}")
+    public String editProfile(@PathVariable long id,
+                              @RequestBody Profiles newProfile){
+        interProfile.editProfile(id, newProfile);
+        
+        return "El Perfil se a acutalizado"; 
     }
     
 }

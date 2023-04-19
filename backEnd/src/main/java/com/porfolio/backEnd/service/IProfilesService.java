@@ -21,4 +21,7 @@ public interface IProfilesService {
     
     // List profiles
     public List<Profiles> getListProfiles();
+    
+    // Edit profile
+    public void editProfile(long id, Profiles newProfile);
 }
