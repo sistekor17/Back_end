@@ -43,11 +43,13 @@ public class ProfilesService implements IProfilesService{
 
     @Override
     public void editProfile(long id, Profiles newProfile) {
-        Profiles profile = profileRepository.findById(id).orElseThrow(()-> new NoSuchElementException("No se encuentra el perfil           con el id: "+ id ));
+        Profiles profile = profileRepository.findById(id).orElseThrow(()-> new NoSuchElementException("No se encuentra el perfil con el id: "+ id ));
         
         profile.setFullname(newProfile.getFullname());
         profile.setProfession(newProfile.getProfession());
+        profile.setAboutme(newProfile.getAboutme());
         profile.setImageprofile(newProfile.getImageprofile());
+        
         profileRepository.save(profile);
             
         

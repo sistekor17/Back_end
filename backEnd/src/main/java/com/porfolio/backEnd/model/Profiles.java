@@ -2,6 +2,7 @@
 package com.porfolio.backEnd.model;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,5 +26,8 @@ public class Profiles  {
     @Basic
     private String fullname;
     private String profession;
+    
+    @Column(length = 600)
+    private String aboutme;
     private String imageprofile;
 }
