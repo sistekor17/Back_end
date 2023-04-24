@@ -24,10 +24,10 @@ public class Profiles  {
     private long id;
     
     @Basic
-    private String fullname;
+    private String fullName;
     private String profession;
     
     @Column(length = 600)
-    private String aboutme;
-    private String imageprofile;
+    private String aboutMe;
+    private String imageProfile;
 }

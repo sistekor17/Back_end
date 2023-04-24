@@ -45,10 +45,10 @@ public class ProfilesService implements IProfilesService{
     public void editProfile(long id, Profiles newProfile) {
         Profiles profile = profileRepository.findById(id).orElseThrow(()-> new NoSuchElementException("No se encuentra el perfil con el id: "+ id ));
         
-        profile.setFullname(newProfile.getFullname());
+        profile.setFullName(newProfile.getFullName());
         profile.setProfession(newProfile.getProfession());
-        profile.setAboutme(newProfile.getAboutme());
-        profile.setImageprofile(newProfile.getImageprofile());
+        profile.setAboutMe(newProfile.getAboutMe());
+        profile.setImageProfile(newProfile.getImageProfile());
         
         profileRepository.save(profile);
             
