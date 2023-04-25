@@ -38,6 +38,7 @@ public class User {
 //    Cardinalidad de tablas: ROl - Ususario relacion de muchos a muchos.
     @ManyToMany(fetch = FetchType.EAGER)
 //  Este es el codigo de la tabla intermedia que va a tener el nombre  "user_rol", la cual contiene dos columnas
+    // relacion usuario-rol: un usuario puede tener varios roles y un rol lo pueden terner varios usuarios.
     @JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 }

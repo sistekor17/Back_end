@@ -13,9 +13,9 @@ import org.springframework.security.core.userdetails.UserDetails;
  *
  * @author JAMES
  */
-
 //Clase encargada de contener toda la seguridad, e implementar la interface UserDetails
-@Getter @Setter 
+@Getter
+@Setter
 public class MainUser implements UserDetails {
 
     private String name;
@@ -31,35 +31,53 @@ public class MainUser implements UserDetails {
         this.password = password;
         this.authorities = authorities;
     }
-    
-   
+
     public static MainUser build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolName().name())).collect(Collectors.toList());
         return new MainUser(user.getName(), user.getNickname(), user.getEmail(), user.getPassword(), authorities);
     }
 
     @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
     public String getUsername() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return nickName;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
+
 }
