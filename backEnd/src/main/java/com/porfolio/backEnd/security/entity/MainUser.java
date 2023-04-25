@@ -34,7 +34,7 @@ public class MainUser implements UserDetails {
 
     public static MainUser build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolName().name())).collect(Collectors.toList());
-        return new MainUser(user.getName(), user.getNickname(), user.getEmail(), user.getPassword(), authorities);
+        return new MainUser(user.getName(), user.getNickName(), user.getEmail(), user.getPassword(), authorities);
     }
 
     @Override

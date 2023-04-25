@@ -28,7 +28,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
-    private String nickname;
+    private String nickName;
     @Column(unique = true)
     private String name;
     @NotNull
