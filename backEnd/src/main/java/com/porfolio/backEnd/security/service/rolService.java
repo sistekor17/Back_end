@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @author JAMES
  */
 @Service @Transactional
-public class rolService {
+public class RolService {
     @Autowired
     IRolRepository irolRepo;
     

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author JAMES
  */
 @Service @Transactional
-public class userService {
+public class UserService {
     
     @Autowired 
     IUserRepository iUserRepo;
