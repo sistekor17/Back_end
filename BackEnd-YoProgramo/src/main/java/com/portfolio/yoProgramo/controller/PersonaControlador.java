@@ -2,7 +2,7 @@
 package com.portfolio.yoProgramo.controller;
 
 import com.portfolio.yoProgramo.entity.Persona;
-import com.portfolio.yoProgramo.service.ImpPersonaService;
+import com.portfolio.yoProgramo.service.PersonaService;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,11 +20,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping("persona")//localhost:8080/experiencia
-@CrossOrigin(origins={"https://portfoliomanuacosta.web.app","http://localhost:4200"})
+@CrossOrigin(origins={"http://localhost:4200"})
 public class PersonaControlador {
     
     @Autowired 
-    ImpPersonaService  IPersonaService;
+    PersonaService  IPersonaService;
     
     
     @GetMapping ("/lista")
@@ -35,20 +35,20 @@ public class PersonaControlador {
     
     @GetMapping("/detail/{id}")
     public ResponseEntity<Persona> detail(@PathVariable("id") Long id){
-        Persona perso = IPersonaService.getOne(id);
+        Persona perso = IPersonaService.findPersona(id);
         return new ResponseEntity(perso, HttpStatus.OK);
     }       
     
     
     @PostMapping("/create")
     public void save(@RequestBody Persona persona){
-        IPersonaService.save(persona);
+        IPersonaService.savePersona(persona);
     }
     
     
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
-        IPersonaService.delete(id);
+        IPersonaService.deletePersona(id);
     }
     
    

@@ -2,7 +2,7 @@
 package com.portfolio.yoProgramo.controller;
 
 import com.portfolio.yoProgramo.entity.Experiencia;
-import com.portfolio.yoProgramo.service.IExperienciaService;
+import com.portfolio.yoProgramo.service.ExperienciaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("experiencia")//localhost:8080/experiencia
-@CrossOrigin(origins={"https://portfoliomanuacosta.web.app","http://localhost:4200"})//direccion del front de angular
+@CrossOrigin(origins={"http://localhost:4200"})//direccion del front de angular
 public class ExperienciaControlador {
    
      @Autowired
-    IExperienciaService iExpServ;
+    ExperienciaService iExpServ;
     
     
     @GetMapping ("/lista")

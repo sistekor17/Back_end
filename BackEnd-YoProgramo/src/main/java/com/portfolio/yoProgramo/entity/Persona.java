@@ -20,16 +20,15 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotNull
+    
     @Size(min = 1, max = 40, message = "no cumple con la longitud")
     private String nombre;
      
-    @NotNull
+    
     @Size(min = 1, max = 40, message = "no cumple con la longitud")
     private String titulo;
     
     @Lob
-    @NotNull
     @Size(min = 20, max = 5000, message = "no cumple con la longitud")
     private String sobreMi;
     
